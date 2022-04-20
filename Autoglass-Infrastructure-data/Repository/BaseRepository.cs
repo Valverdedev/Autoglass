@@ -21,7 +21,7 @@ namespace Autoglass_Infrastructure_data.Repository
         }
 
 
-        public void Insert(TEntity obj)
+        public void  Insert(TEntity obj)
         {
             _dataContext.Set<TEntity>().Add(obj);
             _dataContext.SaveChanges();
@@ -33,17 +33,11 @@ namespace Autoglass_Infrastructure_data.Repository
             DbSet.Update(obj);
         }
 
-        public void Delete(int id)
-        {
-            _dataContext.Set<TEntity>().Remove(Select(id));
-            _dataContext.SaveChanges();
-        }
-
         public IList<TEntity> Select() =>
             _dataContext.Set<TEntity>().ToList();
 
-        public TEntity Select(int id) =>
-            _dataContext.Set<TEntity>().Find(id);
+        public async Task<TEntity> Select(int id) =>
+          await  _dataContext.Set<TEntity>().FindAsync(id);
 
         public async Task InsertAssync(TEntity obj)
         {

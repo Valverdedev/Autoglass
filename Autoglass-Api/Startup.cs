@@ -1,7 +1,6 @@
 using Autoglass_Application.Interfaces;
 using Autoglass_Application.Services;
 using Autoglass_Domain.Interfaces.Repository;
-using Autoglass_Domain.Services;
 using Autoglass_Infrastructure_data.Context;
 using Autoglass_Infrastructure_data.Repository;
 using Microsoft.AspNetCore.Builder;
@@ -20,6 +19,7 @@ using Microsoft.AspNet.OData.Extensions;
 using Microsoft.OData.Edm;
 using Microsoft.AspNet.OData.Builder;
 using OData.Swagger.Services;
+using Autoglas_Domain_Services.Services;
 
 namespace Autoglass_Api
 {
@@ -54,9 +54,13 @@ namespace Autoglass_Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Autoglass_Api", Version = "v1" });
             });
 
+            
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            services.AddScoped<IFornecedorRepository, FornecedorRepository>();
             services.AddScoped<IProdutoAppService, ProdutoAppService>();
+            services.AddScoped<IFornecedorAppService, FornecedorAppService>();
             services.AddScoped<ProdutoService>();
+            services.AddScoped<FornecedorService>();
 
             services.AddScoped<IValidator<CriarProdutoDto>, ProdutoValidator>();
 

@@ -16,18 +16,28 @@ namespace Autoglass_Infrastructure_data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.16");
 
-            modelBuilder.Entity("Autoglass_Domain.Entities.Produto", b =>
+            modelBuilder.Entity("Autoglass_Domain.Entities.Fornecedor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("CnpjFornecedor")
-                        .HasMaxLength(14)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("CodigoFornecedor")
+                    b.Property<string>("DescricaoFornecedor")
                         .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Fornecedores");
+                });
+
+            modelBuilder.Entity("Autoglass_Domain.Entities.Produto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("DataFabricacao")
                         .HasColumnType("TEXT");
@@ -36,19 +46,30 @@ namespace Autoglass_Infrastructure_data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasMaxLength(200)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("DescricaoFornecedor")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("FornecedorId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("Situacao")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("FornecedorId");
+
                     b.ToTable("Produtos");
+                });
+
+            modelBuilder.Entity("Autoglass_Domain.Entities.Produto", b =>
+                {
+                    b.HasOne("Autoglass_Domain.Entities.Fornecedor", "Fornecedor")
+                        .WithMany()
+                        .HasForeignKey("FornecedorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Fornecedor");
                 });
 #pragma warning restore 612, 618
         }

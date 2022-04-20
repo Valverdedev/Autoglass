@@ -19,15 +19,16 @@ namespace Autoglass_Infrastructure_data.Context
                 optionsBuilder.UseSqlite("Data Source=data.db;");
             } 
         
-        }
-      
+        }      
 
         public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Fornecedor> Fornecedores { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.ApplyConfiguration(new ProdutoMap());
-        }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.ApplyConfiguration(new ProdutoMap());
+        //    modelBuilder.ApplyConfiguration(new FornecedorMap());
+        //}
 
     }
 }

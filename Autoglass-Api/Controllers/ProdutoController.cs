@@ -12,7 +12,7 @@ namespace Autoglass_Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProdutoController : ODataController
+    public class ProdutoController : ControllerBase
     {
         private IProdutoAppService _produtoAppService;
 
@@ -24,10 +24,10 @@ namespace Autoglass_Api.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(CriarProdutoDto), StatusCodes.Status201Created)]
 
-        public async Task<IActionResult> PostProduto([FromBody] CriarProdutoDto produto)
+        public async Task<SystemResponse> PostProduto([FromBody] CriarProdutoDto produto)
         {
 
-            return (IActionResult)await _produtoAppService.InsertAssync(produto);
+            return await _produtoAppService.InsertAssync(produto);
         }
 
         [HttpPut]

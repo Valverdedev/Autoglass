@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autoglass-Application", "Au
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autoglass-Api", "Autoglass-Api\Autoglass-Api.csproj", "{E30B25EE-3A23-4ED5-8CD9-79796B83176B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autoglass-ApplicationTests", "Autoglass-ApplicationTests\Autoglass-ApplicationTests.csproj", "{1B9CBBB0-ADD2-427F-871E-3A9111244372}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autoglass-ApplicationTests", "Autoglass-ApplicationTests\Autoglass-ApplicationTests.csproj", "{1B9CBBB0-ADD2-427F-871E-3A9111244372}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autoglas-Domain-Services", "Autoglas-Domain-Services\Autoglas-Domain-Services.csproj", "{F6DD7623-F626-4DA9-9C04-0AEEAC63B86B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +107,18 @@ Global
 		{1B9CBBB0-ADD2-427F-871E-3A9111244372}.Release|x64.Build.0 = Release|Any CPU
 		{1B9CBBB0-ADD2-427F-871E-3A9111244372}.Release|x86.ActiveCfg = Release|Any CPU
 		{1B9CBBB0-ADD2-427F-871E-3A9111244372}.Release|x86.Build.0 = Release|Any CPU
+		{F6DD7623-F626-4DA9-9C04-0AEEAC63B86B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6DD7623-F626-4DA9-9C04-0AEEAC63B86B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6DD7623-F626-4DA9-9C04-0AEEAC63B86B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F6DD7623-F626-4DA9-9C04-0AEEAC63B86B}.Debug|x64.Build.0 = Debug|Any CPU
+		{F6DD7623-F626-4DA9-9C04-0AEEAC63B86B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F6DD7623-F626-4DA9-9C04-0AEEAC63B86B}.Debug|x86.Build.0 = Debug|Any CPU
+		{F6DD7623-F626-4DA9-9C04-0AEEAC63B86B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6DD7623-F626-4DA9-9C04-0AEEAC63B86B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6DD7623-F626-4DA9-9C04-0AEEAC63B86B}.Release|x64.ActiveCfg = Release|Any CPU
+		{F6DD7623-F626-4DA9-9C04-0AEEAC63B86B}.Release|x64.Build.0 = Release|Any CPU
+		{F6DD7623-F626-4DA9-9C04-0AEEAC63B86B}.Release|x86.ActiveCfg = Release|Any CPU
+		{F6DD7623-F626-4DA9-9C04-0AEEAC63B86B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,6 +129,7 @@ Global
 		{55E538EF-86EF-4552-BD2A-4CFEE73F191B} = {C794BBBB-16B9-4576-89A0-AB0821647F3D}
 		{0F8856E7-12AC-4D55-AB10-53774DD5F983} = {AA6EB217-5647-40C3-9B19-2971C216FCA7}
 		{E30B25EE-3A23-4ED5-8CD9-79796B83176B} = {D807815B-2A6B-4FBD-AF96-8ADDAF8EB036}
+		{F6DD7623-F626-4DA9-9C04-0AEEAC63B86B} = {FD234995-8BF8-4DC2-AAF2-BCAADC75DC56}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {93093CE1-3CB5-4675-825B-1ECC2F22DB08}

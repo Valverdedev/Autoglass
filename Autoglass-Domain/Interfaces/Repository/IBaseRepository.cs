@@ -13,11 +13,10 @@ namespace Autoglass_Domain.Interfaces.Repository
 
         void Update(TEntity obj);
 
-        void Delete(int id);
+        //void Delete(int id);
 
         IList<TEntity> Select();
-
-        TEntity Select(int id);
+        Task<TEntity> Select(int id);
         Task SaveChangesAsync();
         IQueryable<TEntity> Query();
     }

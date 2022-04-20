@@ -11,15 +11,9 @@ namespace Autoglass_Domain.Entities
         public bool Situacao { get; set; }
         public DateTime DataFabricacao { get; set; }
         public DateTime DataValidade { get; set; }
-        public string CodigoFornecedor { get; set; }
-        public string DescricaoFornecedor { get; set; }
-        public string CnpjFornecedor { get; set; }
-
-        public void SetSituacaoTrue()
-        {
-            Situacao = true;
-        }
-
+        public int FornecedorId { get; set; }
+        public Fornecedor Fornecedor { get; set; }
+       
         public void SetSituacaoFalse()
         {
             Situacao = false;
