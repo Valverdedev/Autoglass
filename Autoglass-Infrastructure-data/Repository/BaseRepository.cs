@@ -19,32 +19,35 @@ namespace Autoglass_Infrastructure_data.Repository
             _dataContext = dataContext;
             DbSet = _dataContext.Set<TEntity>();
         }
+       
 
-
-        public void  Insert(TEntity obj)
+        public void Insert(TEntity obj)
         {
             _dataContext.Set<TEntity>().Add(obj);
             _dataContext.SaveChanges();
         }
 
-        public virtual void Update(TEntity obj)
+        public virtual async Task<TEntity> Update(TEntity obj)
         {
             _dataContext.ChangeTracker.Clear();
             DbSet.Update(obj);
+           await _dataContext.SaveChangesAsync();
+            return obj;
         }
 
         public IList<TEntity> Select() =>
             _dataContext.Set<TEntity>().ToList();
 
         public async Task<TEntity> Select(int id) =>
-          await  _dataContext.Set<TEntity>().FindAsync(id);
+          await _dataContext.Set<TEntity>().FindAsync(id);
 
-        public async Task InsertAssync(TEntity obj)
+        public async Task<TEntity> InsertAssync(TEntity obj)
         {
             await _dataContext.AddAsync(obj);
             await _dataContext.SaveChangesAsync();
-
+            return obj;
         }
+        
 
         public virtual IQueryable<TEntity> Query()
         {

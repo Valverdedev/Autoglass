@@ -11,7 +11,7 @@ namespace Autoglass_Application.Interfaces
         Task<SystemResponse> InsertAssync(CriarProdutoDto Entity);
         Task<SystemResponse> Update(AlterarProdutoDto Entity);
         Task<SystemResponse> InativarProduto(int idProduto);
-        List<Produto> ListarTodos();
+        Task<List<ExibirProdutoDto>> ListarTodos();
         SystemResponse Get(int idProduto);
     }
 }

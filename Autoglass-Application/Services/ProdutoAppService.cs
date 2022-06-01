@@ -40,9 +40,11 @@ namespace Autoglass_Application.Services
             return await _produtoService.InativarProduto(idProduto);
         }
 
-       public List<Produto> ListarTodos()
+       public async Task<List<ExibirProdutoDto>> ListarTodos()
         {
-            return  _produtoService.ListarTodos();
+           var litaProdutos = await _produtoService.ListarTodos();
+
+            return _mapper.Map<List<ExibirProdutoDto>>(litaProdutos);
         }
     }
 }

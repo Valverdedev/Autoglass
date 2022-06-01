@@ -8,125 +8,62 @@ using System.Threading.Tasks;
 
 namespace Autoglas_Domain_Services.Services
 {
-    public class ProdutoService
+    public class ProdutoService : SystemResponse
     {
-        private IBaseRepository<Produto> _baseRepository;
-        private IFornecedorRepository _fornecedorRepository;
+        private readonly IBaseRepository<Produto> _produtoRepository;
+        private readonly IBaseRepository<Fornecedor> _fornecedorRepository;
 
-        public ProdutoService(IBaseRepository<Produto> baseRepository, IFornecedorRepository fornecedorRepository)
+        public ProdutoService(IBaseRepository<Produto> baseRepository, IBaseRepository<Fornecedor> fornecedorRepository)
         {
-            _baseRepository = baseRepository;
+            _produtoRepository = baseRepository;
             _fornecedorRepository = fornecedorRepository;
         }
 
         public async Task<SystemResponse> Adicionar(Produto produto)
         {
-            var response = new SystemResponse();
-            var fornecedor = _fornecedorRepository.Query().FirstOrDefault(a => a.Id == produto.FornecedorId);
-            
-            if (fornecedor == null)
-            {
-                response.AddError("Id", "Não há fornecedor com este ID");
-                return response;
-            }
-            produto.Situacao = true;
-            
 
-            try
-            {
-                await _baseRepository.InsertAssync(produto);
-                response.Data = produto;
-            }
-            catch (System.Exception)
-            {
+            Result(await _produtoRepository.InsertAssync(produto));
 
-                throw;
-            }
-            return response;
+            return Return();
         }
 
-        public  List<Produto> ListarTodos()
+        public async Task<List<Produto>> ListarTodos()
         {
-            return _baseRepository.Query().Include(a => a.Fornecedor).Where(p => p.Situacao).ToList();
+            return await _produtoRepository.Query().Include(a => a.Fornecedor).Where(p => p.Situacao).ToListAsync();
         }
 
         public SystemResponse Get(int idProduto)
         {
-            var response = new SystemResponse();
 
-            var produto = _baseRepository.Query().Include(a => a.Fornecedor).FirstOrDefault(p => p.Situacao == true && p.Id == idProduto);
-            if (produto == null)
-            {
-                response.AddError("Não encontrado", "Não há produtos cadastrados");
-                return response;
-            }
+            var produto = _produtoRepository.Query().Include(a => a.Fornecedor).FirstOrDefault(p => p.Situacao == true && p.Id == idProduto);
 
-            response.Data = produto;
+            if (produto == null) AddError(idProduto.ToString(), "Não há produtos cadastrados");
 
-            return response;
+            Result(produto);
+
+            return Return();
         }
 
         public async Task<SystemResponse> Alterar(Produto produto)
         {
-            var response = new SystemResponse();
-            var fornecedor = _fornecedorRepository.Query().FirstOrDefault(a => a.Id == produto.FornecedorId);
 
-            if (fornecedor == null)
-            {
-                response.AddError("Id", "Não há fornecedor com este ID");
-                return response;
-            }
-            if (_baseRepository.Query().FirstOrDefault(p => p.Id == produto.Id && p.Situacao == true) != null)
-            {
-                try
-                {
-                    _baseRepository.Update(produto);
-                  await  _baseRepository.SaveChangesAsync();
+            Result(await _produtoRepository.Update(produto));
 
-                    response.Data = produto;
-                }
-                catch (System.Exception)
-                {
-
-                    throw;
-                }
-
-            }
-            else
-            {
-                response.AddError("Não Encontrado", "o id informado não existe na base de dados, ou está inativo");
-            }
-            return response;
+            return Return();
         }
 
         public async Task<SystemResponse> InativarProduto(int idProduto)
         {
-            var response = new SystemResponse();
-            Produto produto = new Produto();
+            var produto = _produtoRepository.Query().Where(p => p.Id == idProduto && p.Situacao == true).FirstOrDefault();
 
-            produto = _baseRepository.Query().Where(p => p.Id == idProduto && p.Situacao == true).FirstOrDefault();
+            if (produto == null) AddError("Não Encontrado", "o id informado não existe na base de dados, ou está inativo");
 
-            if (produto == null)
-            {
-                response.AddError("Não Encontrado", "o id informado não existe na base de dados, ou está inativo");
-                return response;
-            }
 
-            produto.Situacao = false;
-            try
-            {
-                _baseRepository.Update(produto);
-               await _baseRepository.SaveChangesAsync();
+            produto.SetSituacaoFalse();
 
-                response.Data = produto;
-            }
-            catch (System.Exception)
-            {
+            Result(await _produtoRepository.Update(produto));
 
-                throw;
-            }
-
-            return response;
+            return Return();
 
         }
 

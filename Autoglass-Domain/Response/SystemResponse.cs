@@ -5,8 +5,8 @@ namespace Autoglass_Domain.Response
 {
     public class SystemResponse
     {
-        public object Data { get; set; }
-        public ValidationResult ValidationResult { get; set; }
+        public  object Data { get; set; }
+        public  ValidationResult ValidationResult { get; set; }
 
         public SystemResponse()
         {
@@ -23,7 +23,7 @@ namespace Autoglass_Domain.Response
             ValidationResult = validationResult;
         }
 
-        public SystemResponse(ValidationResult validationResult, object data)
+        public  SystemResponse(ValidationResult validationResult, object data)
         {
             ValidationResult = validationResult;
             Data = data;
@@ -32,6 +32,16 @@ namespace Autoglass_Domain.Response
         public void AddError(string codigo, string message)
         {
             ValidationResult.Errors.Add(new ValidationFailure(codigo, message));
+        }
+
+        public void Result(object data)
+        {
+            Data = data;
+        }
+
+        public SystemResponse Return()
+        {
+            return this;
         }
     }
 }

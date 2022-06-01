@@ -39,9 +39,9 @@ namespace Autoglass_Api.Controllers
         }
         [EnableQuery]
         [HttpGet]
-        public List<Produto> ListarTodos()
+        public async Task<List<ExibirProdutoDto>> ListarTodos()
         {
-            return _produtoAppService.ListarTodos();
+            return await _produtoAppService.ListarTodos();
         }
 
         [HttpGet("{idProduto}")]
@@ -50,7 +50,7 @@ namespace Autoglass_Api.Controllers
             return _produtoAppService.Get(idProduto);
         }
 
-        [HttpPut("{idProduto}")]       
+        [HttpPut("/Deletar/{idProduto}")]       
         public async Task<SystemResponse> InativarProduto(int idProduto)
         {
 

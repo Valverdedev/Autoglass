@@ -7,11 +7,11 @@ namespace Autoglass_Domain.Interfaces.Repository
 {
     public interface IBaseRepository<TEntity> where TEntity : Entity
     {
-        Task InsertAssync(TEntity obj);
+        Task<TEntity> InsertAssync(TEntity obj);
 
         void Insert(TEntity obj);
 
-        void Update(TEntity obj);
+        Task<TEntity> Update(TEntity obj);
 
         //void Delete(int id);
 

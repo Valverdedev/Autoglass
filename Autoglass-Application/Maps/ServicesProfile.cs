@@ -11,6 +11,7 @@ namespace Autoglass_Application.Maps
             CreateMap<Produto, CriarProdutoDto>().ReverseMap();
             CreateMap<Produto, AlterarProdutoDto>().ReverseMap();
             CreateMap<Fornecedor, FornecedortDto>().ReverseMap();
+            CreateMap<ExibirProdutoDto, Produto>().ReverseMap();
         }
     }
 }

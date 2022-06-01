@@ -2,19 +2,14 @@
 
 namespace Autoglass_Application.Dtos
 {
-    public class CriarProdutoDto
+    public class ExibirProdutoDto
     {
-        public CriarProdutoDto()
-        {
-            Situacao = true;
-        }
-
-        public string Descricao { get; set; }     
+        public int  Id { get; set; }
+        public string Descricao { get; set; }
         public DateTime DataFabricacao { get; set; }
         public DateTime DataValidade { get; set; }
         public int FornecedorId { get; set; }
-        public bool Situacao;
 
-       
+        public bool Situacao;
     }
 }

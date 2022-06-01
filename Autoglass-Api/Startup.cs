@@ -63,8 +63,10 @@ namespace Autoglass_Api
             services.AddScoped<FornecedorService>();
 
             services.AddScoped<IValidator<CriarProdutoDto>, ProdutoValidator>();
+            services.AddScoped<IValidator<AlterarProdutoDto>, AlterarProdutoValidator>();
+          
 
-           
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

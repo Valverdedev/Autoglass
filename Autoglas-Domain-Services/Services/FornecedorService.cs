@@ -18,8 +18,8 @@ namespace Autoglas_Domain_Services.Services
 
         public async Task<SystemResponse> Adicionar(Fornecedor fornecedor)
         {
-            SystemResponse response = new SystemResponse();
-            _fornecedorRepository.Insert(fornecedor);
+            SystemResponse response = new();
+           await _fornecedorRepository.InsertAssync(fornecedor);
 
             response.Data = fornecedor;
 
