@@ -9,7 +9,6 @@ namespace Autoglass_Application.Dtos
         public DateTime DataFabricacao { get; set; }
         public DateTime DataValidade { get; set; }
         public int FornecedorId { get; set; }
-
-        public bool Situacao;
+       
     }
 }

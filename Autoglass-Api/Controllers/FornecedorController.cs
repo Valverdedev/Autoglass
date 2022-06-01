@@ -1,8 +1,10 @@
 ﻿using Autoglass_Application.Dtos;
 using Autoglass_Application.Interfaces;
 using Autoglass_Domain.Response;
+using Microsoft.AspNet.OData;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Autoglass_Api.Controllers
@@ -19,12 +21,19 @@ namespace Autoglass_Api.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(FornecedortDto), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(CriarFornecedortDto), StatusCodes.Status201Created)]
 
-        public async Task<SystemResponse> PostProduto([FromBody] FornecedortDto fornecedor)
+        public async Task<SystemResponse> PostProduto([FromBody] CriarFornecedortDto fornecedor)
         {
 
             return await _fornecedorAppService.Adicionar(fornecedor);
+        }
+
+        [EnableQuery]
+        [HttpGet]
+        public async Task<List<ExibirFornecedorDto>> ListarTodos()
+        {
+            return await _fornecedorAppService.ListarTodos();
         }
     }
 }

@@ -64,7 +64,8 @@ namespace Autoglass_Api
 
             services.AddScoped<IValidator<CriarProdutoDto>, ProdutoValidator>();
             services.AddScoped<IValidator<AlterarProdutoDto>, AlterarProdutoValidator>();
-          
+            services.AddScoped<IValidator<CriarFornecedortDto>, FornecedorValidator>();
+
 
 
         }

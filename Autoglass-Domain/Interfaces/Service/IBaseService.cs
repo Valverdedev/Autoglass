@@ -1,12 +1,11 @@
 ﻿using Autoglass_Domain_Core.Model;
-using FluentValidation;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Autoglass_Domain.Interfaces.Service
 {
-  
-        public interface IBaseService<TEntity> where TEntity : Entity
+
+    public interface IBaseService<TEntity> where TEntity : Entity
         {
         Task Adicionar(TEntity entity);
 

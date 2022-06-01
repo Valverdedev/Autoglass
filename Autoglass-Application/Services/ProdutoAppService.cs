@@ -25,12 +25,12 @@ namespace Autoglass_Application.Services
             return _produtoService.Get(idProduto);
         }
 
-        public async Task<SystemResponse> InsertAssync(CriarProdutoDto Entity)
+        public async Task<SystemResponse> Inserir(CriarProdutoDto Entity)
         {            
             return await _produtoService.Adicionar(_mapper.Map<Produto>(Entity));
         }
 
-       public async Task<SystemResponse> Update(AlterarProdutoDto Entity)
+       public async Task<SystemResponse> Atualizar(AlterarProdutoDto Entity)
         {
             return await _produtoService.Alterar(_mapper.Map<Produto>(Entity));
         }

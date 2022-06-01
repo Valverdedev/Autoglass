@@ -1,6 +1,5 @@
 ﻿using Autoglass_Application.Dtos;
 using Autoglass_Application.Interfaces;
-using Autoglass_Domain.Entities;
 using Autoglass_Domain.Response;
 using Microsoft.AspNet.OData;
 using Microsoft.AspNetCore.Http;
@@ -24,10 +23,10 @@ namespace Autoglass_Api.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(CriarProdutoDto), StatusCodes.Status201Created)]
 
-        public async Task<SystemResponse> PostProduto([FromBody] CriarProdutoDto produto)
+        public async Task<SystemResponse> AdicionarProduto([FromBody] CriarProdutoDto produto)
         {
 
-            return await _produtoAppService.InsertAssync(produto);
+            return await _produtoAppService.Inserir(produto);
         }
 
         [HttpPut]
@@ -35,7 +34,7 @@ namespace Autoglass_Api.Controllers
         public async Task<SystemResponse> AlterarProduto([FromBody] AlterarProdutoDto produto)
         {
 
-            return await _produtoAppService.Update(produto);
+            return await _produtoAppService.Atualizar(produto);
         }
         [EnableQuery]
         [HttpGet]
@@ -45,7 +44,7 @@ namespace Autoglass_Api.Controllers
         }
 
         [HttpGet("{idProduto}")]
-        public SystemResponse GetId(int idProduto)
+        public SystemResponse ObterId(int idProduto)
         {
             return _produtoAppService.Get(idProduto);
         }
@@ -53,7 +52,6 @@ namespace Autoglass_Api.Controllers
         [HttpPut("/Deletar/{idProduto}")]       
         public async Task<SystemResponse> InativarProduto(int idProduto)
         {
-
             return await _produtoAppService.InativarProduto(idProduto);
         }
     }

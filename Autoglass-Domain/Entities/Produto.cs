@@ -5,11 +5,7 @@ namespace Autoglass_Domain.Entities
 {
     public class Produto : Entity
     {
-        public Produto(bool situacao)
-        {
-            Situacao = situacao;
-        }
-
+       
         public string Descricao { get; set; }
         public bool Situacao { get; private set; }
         public DateTime DataFabricacao { get; set; }

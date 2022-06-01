@@ -2,7 +2,6 @@
 using Autoglass_Domain.Entities;
 using Autoglass_Domain.Interfaces.Repository;
 using FluentValidation;
-using System;
 using System.Linq;
 
 namespace Autoglass_Application.Validators

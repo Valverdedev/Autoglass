@@ -1,15 +1,18 @@
 ﻿using Autoglass_Domain.Entities;
 using Autoglass_Domain.Interfaces.Repository;
 using Autoglass_Domain.Response;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Autoglas_Domain_Services.Services
 {
-    public class FornecedorService
+    public class FornecedorService : SystemResponse
     {
-        private readonly IFornecedorRepository _fornecedorRepository;
+        private readonly IBaseRepository<Fornecedor> _fornecedorRepository;
 
-        public FornecedorService(IFornecedorRepository fornecedorRepository)
+        public FornecedorService(IBaseRepository<Fornecedor> fornecedorRepository)
         {
             
             _fornecedorRepository = fornecedorRepository;
@@ -18,12 +21,15 @@ namespace Autoglas_Domain_Services.Services
 
         public async Task<SystemResponse> Adicionar(Fornecedor fornecedor)
         {
-            SystemResponse response = new();
-           await _fornecedorRepository.InsertAssync(fornecedor);
+            
+          Result(await  _fornecedorRepository.InsertAssync(fornecedor));            
 
-            response.Data = fornecedor;
+            return Return();
+        }
 
-            return response;
+        public async Task<List<Fornecedor>> ListarTodos()
+        {
+            return await _fornecedorRepository.Query().ToListAsync();
         }
     }
 }

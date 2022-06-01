@@ -1,5 +1,4 @@
 ﻿using Autoglass_Domain_Core.Model;
-using System.Collections.Generic;
 
 namespace Autoglass_Domain.Entities
 {

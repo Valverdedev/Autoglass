@@ -1,5 +1,4 @@
 ﻿using Autoglass_Domain.Entities;
-using Autoglass_Infrastructure_data.Mappings;
 using Microsoft.EntityFrameworkCore;
 
 namespace Autoglass_Infrastructure_data.Context

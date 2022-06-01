@@ -1,6 +1,6 @@
 ﻿namespace Autoglass_Application.Dtos
 {
-    public class FornecedortDto
+    public class CriarFornecedortDto
     {
         public string DescricaoFornecedor { get; set; }
         public string CnpjFornecedor { get; set; }

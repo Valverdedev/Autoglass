@@ -4,6 +4,7 @@ using Autoglass_Application.Interfaces;
 using Autoglass_Domain.Entities;
 using Autoglass_Domain.Response;
 using AutoMapper;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Autoglass_Application.Services
@@ -19,9 +20,16 @@ namespace Autoglass_Application.Services
             _fornecedorService = fornecedorService;
         }
 
-        public async Task<SystemResponse> Adicionar(FornecedortDto Entity)
+        public async Task<SystemResponse> Adicionar(CriarFornecedortDto Entity)
         {
             return await _fornecedorService.Adicionar(_mapper.Map<Fornecedor>(Entity));
+        }
+
+        public async Task<List<ExibirFornecedorDto>> ListarTodos()
+        {
+            var litaProdutos = await _fornecedorService.ListarTodos();
+
+            return _mapper.Map<List<ExibirFornecedorDto>>(litaProdutos);
         }
     }
 }
