@@ -3,7 +3,6 @@ using Autoglass_Domain.Interfaces.Repository;
 using Autoglass_Domain.Response;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Autoglas_Domain_Services.Services

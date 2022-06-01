@@ -56,7 +56,7 @@ namespace Autoglass_Api
 
             
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
-            services.AddScoped<IFornecedorRepository, FornecedorRepository>();
+          
             services.AddScoped<IProdutoAppService, ProdutoAppService>();
             services.AddScoped<IFornecedorAppService, FornecedorAppService>();
             services.AddScoped<ProdutoService>();
@@ -96,9 +96,7 @@ namespace Autoglass_Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                //endpoints.Select().Filter().OrderBy().Count().MaxTop(10);
-                //endpoints.EnableDependencyInjection();   
-                //endpoints.MapODataRoute("odata", "odata", GetEdmodel());
+                
             });
         }
 
